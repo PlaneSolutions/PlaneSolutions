@@ -18,9 +18,8 @@ class Upload_File extends CI_Controller {
         $this->upload->initialize($config);
         if($this->upload->do_upload())
         {
-            $edit = 'edit';
-            $data = array('upload_data' => $this->upload->data(),'edit' => $edit);
-            redirect('welcome/editcampaign/edit/'.$campaign_id);
+            $data = array('upload_data' => $this->upload->data(),'campaign_id' => $campaign_id);
+            redirect('welcome/editcampaign/edit/'.$data);
         }
         else
         {
