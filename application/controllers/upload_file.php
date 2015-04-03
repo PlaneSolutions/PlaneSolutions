@@ -4,8 +4,10 @@ class Upload_File extends CI_Controller {
         parent::__construct();
         $this->load->helper('form');
         $this->load->helper('url');
+        $this->load->library('tank_auth');
     }
     public function do_upload($campaign_id){
+        $type = 'marker';
         $config = array(
             'upload_path' => "public/img/uploads",
             'allowed_types' => "jpg|png|jpeg",
@@ -18,8 +20,11 @@ class Upload_File extends CI_Controller {
         $this->upload->initialize($config);
         if($this->upload->do_upload())
         {
-            $data = array('upload_data' => $this->upload->data(),'campaign_id' => $campaign_id);
-            redirect('welcome/editcampaign/edit/'.$data);
+            $image_data = array('upload_data' => $this->upload->data());
+            $other_data = array('type' => $type,'campaign_id'=>$campaign_id, 'u_id' => $this->tank_auth->get_user_id());
+            /*$this->load->view('file_view',$image_data);*/
+            $this->Pages_model->uploadimage($image_data,$other_data);
+            redirect('welcome/editcampaign/edit/'.$campaign_id);
         }
         else
         {

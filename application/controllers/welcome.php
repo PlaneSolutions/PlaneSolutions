@@ -26,6 +26,7 @@ class Welcome extends CI_Controller
         $data['tab'] = $tab;
         $data['campaing'] = $this->Campaing_model->get_campaing($this->tank_auth->get_user_id(),$campaing_id);
         $data['username'] = $this->tank_auth->get_username();
+        $data['pages'] = $this->Pages_model->get_all_images($this->tank_auth->get_user_id(),$campaing_id);
         $this->load->view('editcampaign',$data);
     }
 }
