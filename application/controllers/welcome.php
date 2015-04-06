@@ -9,10 +9,17 @@ class Welcome extends CI_Controller
 		$this->load->helper('url');
         $this->load->helper('form');
 		$this->load->library('tank_auth');
+        $this->load->library('parser');
 	}
 
 	function index()
 	{
+
+        /*//Converting XML into Json object
+        $feed = file_get_contents('http://geovideos.tv/category/geo-news/geo-headlines/feed/');
+        $xmlNode = simplexml_load_string($feed);
+        echo json_encode($xmlNode);*/
+
 		if (!$this->tank_auth->is_logged_in()) {
 			redirect('/auth/login/');
 		} else {
