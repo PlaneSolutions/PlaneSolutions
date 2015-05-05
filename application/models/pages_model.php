@@ -16,14 +16,6 @@ class Pages_model extends CI_Model {
             'u_id' => $other_data['u_id'],
             'campaing_id' => $other_data['campaign_id'],
         );
-        $query = $this->db->get_where('campaings' ,array('id' => $other_data['campaign_id']));
-        $check = $query->result();
-        if($check[0]->number_of_pages == 0){
-            $this->db->where('id', $other_data['campaign_id']);
-            $this->db->set('thumbnail_img', $image_data['upload_data']['file_name']);
-            $this->db->update('campaings');
-
-        }
         $this->db->insert('images',$data);
         $this->db->where('id', $other_data['campaign_id']);
         $this->db->set('number_of_pages', 'number_of_pages+1', FALSE);
