@@ -133,7 +133,7 @@
             <?php foreach($campaings as $campaing){?>
                 <div class="panel-body" style="text-transform: none;display: inline-block;width: 255px;height: 325px;overflow: hidden;">
                     <a href="<?php echo site_url('welcome/editcampaign/edit/'.$campaing->id)?>" class="thumbnail" style="text-decoration: none;background-color: #FFFFFF;padding: 0px">
-                        <div style="position: relative;background: url(<?php if($campaing->number_of_pages == 0)echo base_url('public/img/nopages.png'); else echo base_url('public/img/1234.jpg'); ?>);background-size: auto 100%;background-position-x: 50%;background-repeat: no-repeat;height: 247px;"></div>
+                        <div style="position: relative;background: url(<?php if($campaing->number_of_pages == 0)echo base_url('public/img/nopages.png'); else echo base_url('public/img/12345.jpg'); ?>);background-size: auto 100%;background-position-x: 50%;background-repeat: no-repeat;height: 247px;"></div>
                         <div class="detail" style="cursor: default;position: relative;padding: 5px 5px 5px 10px;color: rgb(114, 114, 114);float: right;overflow: hidden;width: 225px;left: 1px;height: 50px;border: 1px solid rgb(211, 211, 211);top: 0px;background: white;">
                             <div>
                                 <b><?php echo $campaing->title ?></b><br>
