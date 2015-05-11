@@ -40,9 +40,12 @@ $upload_form = array(
         border: 1px solid #ededed;
         background-color: whitesmoke;
     }
+    .nav-tabs{
+        border-bottom: 1px solid rgb(29, 109, 51);
+    }
     .nav-tabs>li>a{
         opacity: 0.7;
-        color: #46484d;
+        color: #ffffff;
         border: none;
     }
     .nav-tabs>li>a:hover{
@@ -59,8 +62,12 @@ $upload_form = array(
         opacity: 2;
     }
     .nav-tabs>li.active#testc>a,.nav-tabs>li.active#testc>a:focus{
-        color: #fff;
+        color: #ffffff;
         background-color: #46484d;
+        border: 1px solid #46484d;
+    }
+    .nav-tabs>li.active>a{
+        color: #000000;
     }
     #mid-panel{
         background-color: #EDEDED;
@@ -220,18 +227,18 @@ $upload_form = array(
 </head>
 <body>
 <div class="outer-container" style="overflow: hidden;">
-<header style="border-bottom: 1px solid #dcd9d5;height: 60px;background: #fff;position: relative;z-index: 2;">
-    <div id="logo" style="height: 60px;float: left;padding: 0 10px 0 20px;overflow: hidden;border-right: 1px solid #e5e5e5;">
-        <span style="position: relative;top: 25px;font-size: 20px;"><a href="<?php echo site_url('welcome')?>" style="text-decoration: none;color: inherit;"><img  alt="GuidAR Logo" src="<?php echo base_url('public/img/logog.png')?>" style="width: 110px;height: 50px;position: relative;top: -20px;"></a></span>
+<header style="border-bottom: 1px solid #1D6D33;height: 60px;background: #1D6D33;position: relative;z-index: 2;">
+    <div id="logo" style="height: 60px;float: left;padding: 0 10px 0 20px;overflow: hidden;border-right: 1px solid #fff;">
+        <span style="position: relative;top: 25px;font-size: 20px;"><a href="<?php echo site_url('welcome')?>" style="text-decoration: none;color: inherit;"><img  alt="GuidAR Logo" src="<?php echo base_url('public/img/logo.png')?>" style="/*max-width: 65px;max-height: 50px;*/position: relative;top: -20px;"></a></span>
     </div>
-    <h1 style="min-width: 110px;max-width: 180px;float: left;top: 15px;position: relative;font-size: 1.3rem;margin-left: 25px;margin-right: 25px;"><?php echo $campaing[0]->title ?></h1>
+    <h1 style="color: #ffffff;min-width: 110px;max-width: 180px;float: left;top: 15px;position: relative;font-size: 1.3rem;margin-left: 25px;margin-right: 25px;"><?php echo $campaing[0]->title ?></h1>
     <div role="tabpanel" style="display: inline-block;position: absolute;top: 18px;">
         <!-- Nav tabs -->
         <ul class="nav nav-tabs" role="tablist" id="mytab">
-            <li role="presentation" class="<?php echo ($tab == 'settings') ? 'active' : ''; ?>"><a href="#settings" class="glyphicon glyphicon-cog" aria-controls="settings" role="tab" data-toggle="tab"></a></li>
-            <li role="presentation" class="<?php echo ($tab == 'edit') ? 'active' : ''; ?>"><a href="#edit" class="activate_tab" aria-controls="edit" role="tab" data-toggle="tab">Edit</a></li>
+            <li role="presentation" class="<?php echo ($tab == 'settings') ? 'active' : ''; ?>"><a href="#settings"  class="glyphicon glyphicon-cog" aria-controls="settings" role="tab" data-toggle="tab"></a></li>
+            <li role="presentation" class="<?php echo ($tab == 'edit') ? 'active' : ''; ?>"><a href="#edit"  class="activate_tab" aria-controls="edit" role="tab" data-toggle="tab">Edit</a></li>
             <?php if($campaing[0]->number_of_pages !=0){?>
-            <li role="presentation" class="<?php echo ($tab == 'test') ? 'active' : ''; ?>" id="testc"><a href="#test" aria-controls="test" role="tab" data-toggle="tab">Test</a></li>
+                <li role="presentation" class="<?php echo ($tab == 'test') ? 'active' : ''; ?>" id="testc"><a href="#test"  aria-controls="test" role="tab" data-toggle="tab">Test</a></li>
             <?php } ?>
         </ul>
     </div>
@@ -241,7 +248,7 @@ $upload_form = array(
     <div style="padding-right: 25px;position: absolute;top: 0px;right: 0;text-align: right;display: block;width: 25%;height: 60px;">
         <div style="cursor: pointer;margin: 20px 10px 0px 15px;color: #46484d;width: 300px;line-height: 30px;padding: 5px;">
             <div id="user-name" class="dropdown-toggle" data-toggle="dropdown">
-                <span data-bind="label"><?php echo $username; ?></span>&nbsp;<span class="caret"></span>
+                <span data-bind="label" style="color: #ffffff;"><?php echo $username; ?></span>&nbsp;<span class="caret" style="color: #ffffff;"></span>
             </div>
         </div>
     </div>
@@ -322,7 +329,7 @@ $upload_form = array(
             <div STYLE="border-top: 1px solid #dcd9d5;padding: 30px 0 0;margin: 20px 0 0 165px;">
                 <button style="margin: 0px 5px 15px 0px;float: right;width: 20%;cursor: default!important;border-radius: 8px;background-color: #dcd9d5!important;color: #aaa!important;text-shadow: 0 1px 0 #fff!important;box-shadow: 0 1px 0 #fff;padding-left: 30px;padding-right: 30px;" type="submit" class="btn btn-block">Save</button>
             </div>
-        <?php echo form_close();?>
+            <?php echo form_close();?>
     </div>
     <div id="right-panel" style="background-color: #EDEDED;position: absolute;width: 300px;top: 60px;bottom: 0;right: 0;padding: 70px 20px 20px 20px;">
         <ul style="display: none;top: -3px;border-radius: 0px;text-align: right;width: 300px;" class="user-menu dropdown-menu" role="menu">
@@ -335,7 +342,7 @@ $upload_form = array(
 </div>
 <div role="tabpanel" class="tab-pane active" id="edit">
 <?php foreach($campaing as $c);
-if($c->number_of_pages ==0){ ?>
+if($c->number_of_pages == 0){ ?>
     <div id="left-panel" style="position: absolute;bottom: 0;left: 0;top: 60px;width: 180px;padding-top: 20px;background-color: #e5e5e5;border-right: 1px solid #e5e5e5;">
         <div style="height: 45px;text-align: left;">
             <a href="#" style="display: inline-block;width: 130px;margin-left: 15px;box-shadow: inset 0 1px 1px #82807d,0 1px 0 #fff;background: #dcd9d5!important;color: #82807d!important;text-shadow: none;cursor: default;line-height: 30px;text-align: center;border-radius: 8px;">+PAGES</a>
@@ -383,105 +390,119 @@ if($c->number_of_pages ==0){ ?>
         </ul>
     </div>
 <?php } else {?>
-<div id="left-panel" style="position: absolute;bottom: 0;left: 0;top: 60px;width: 180px;padding-top: 20px;background-color: #e5e5e5;border-right: 1px solid #e5e5e5;">
-    <!--<div style="height: 45px;text-align: left;">
-        <a href="#" style="display: inline-block;width: 130px;margin-left: 15px;box-shadow: inset 0 1px 1px #82807d,0 1px 0 #fff;background: #dcd9d5!important;color: #82807d!important;text-shadow: none;cursor: default;line-height: 30px;text-align: center;border-radius: 8px;">+PAGES</a>
-    </div>-->
-    <div style="height: 45px;text-align: left;">
-        <a href="#" style="display: inline-block;width: 130px;margin-left: 15px;background: #82807d;color: white;font-weight: bold;text-shadow: none;cursor: pointer;cursor: hand;text-decoration: none;line-height: 30px;text-align: center;border-radius: 8px;">+PAGES</a>
-    </div>
-    <nav style="top: 70px;bottom: 0;left: 0;right: 0;overflow-x: hidden;overflow-y: auto;position: absolute;">
-        <ol style="padding-bottom: 30px;margin: 0;padding-left: 0px;">
-            <li style="list-style: none;position: relative;border-bottom: 4px solid #00afcc;width: 130px;margin: 0 25px 20px 15px;">
-                <figure>
-                    <div style="width: 100%;background-size: cover;background-position: center top;min-height: 90px;;background-repeat: no-repeat;background-image: url(<?php echo base_url('public/img/pagelistimg.jpg')?>);"></div>
-                    <a href="#" style="display: block;position: absolute;top: 0;left: 0;right: 0;bottom: 0;cursor: pointer;"></a>
-                    <figcaption style="z-index: 10;width: 100%;background-color: #fff;padding: 4px;word-wrap: break-word;">
-                        <h4 style="font-size: 11px;font-size: 1.1rem;margin: 0px;font-weight: bold;line-height: 1.4rem;color: #46484d;word-break: break-word;cursor: text;">Image_name.jpg</h4>
-                        <div>
-                            <div><h5 style="padding-top: 2px;line-height: 1.4rem;color: #82807d;margin: 0px;font-size: 10px;font-size: 1rem;">1 Button</h5></div>
-                        </div>
-                    </figcaption>
-                </figure>
-            </li>
-        </ol>
-    </nav>
-</div>
-<script>
-    $(function() {
-        /*$.ui.draggable.prototype.destroy = function (div, item) { };*/
-        $( "#dragable" )
-            .draggable({
-                helper: 'clone',
-                revert: 'invalid',
-                appendTo: 'body',
-                cursor: "pointer"
-            });
-        $("#target").droppable({
-            accept: "#btn-group  div",
-            drop: function(event,ui){
-                var $newPosX = (((ui.offset.left - $(this).offset().left)/836)*100);
-                var $newPosY = (((ui.offset.top - $(this).offset().top)/560)*100);
-                var $wd = ((ui.helper.width())/836)*100;
-                var $he = ((ui.helper.height())/560)*100;
-                /*$("header").text("left" + $newPosX+"%" + "Top "+ $newPosY+"%");*/
+    <div id="left-panel" style="position: absolute;bottom: 0;left: 0;top: 60px;width: 180px;padding-top: 20px;background-color: #e5e5e5;border-right: 1px solid #e5e5e5;">
+        <!--<div style="height: 45px;text-align: left;">
+            <a href="#" style="display: inline-block;width: 130px;margin-left: 15px;box-shadow: inset 0 1px 1px #82807d,0 1px 0 #fff;background: #dcd9d5!important;color: #82807d!important;text-shadow: none;cursor: default;line-height: 30px;text-align: center;border-radius: 8px;">+PAGES</a>
+        </div>-->
+        <div style="height: 45px;text-align: left;">
+            <label id="add_page" style="height: 35px;display: inline-block;width: 130px;margin-left: 15px;background: #82807d;color: white;font-weight: bold;text-shadow: none;cursor: pointer;cursor: hand;text-decoration: none;line-height: 35px;text-align: center;border-radius: 8px;">+PAGES</label>
+            <?php echo form_open_multipart('upload_file/do_upload/'.$campaing[0]->id,$upload_form);?>
+            <input id="upload_page" style="display: none;height: 35px;position: absolute;top: 20px;width: 130px;cursor: pointer;cursor: hand;left: 15px;" type="file" name="userfile" size="20">
+            <?php echo form_close();?>
 
-                $(this).append($(ui.draggable).clone());
-                $("#target #dragable").addClass("item");
-                $(".item").removeClass("ui-draggable");
-                $(".item").css({"position": "absolute"});
-                $(".item").css("top", (ui.offset.top - $(this).offset().top));
-                $(".item").css("left", (ui.offset.left - $(this).offset().left));
-                $(".item").css("width", ui.helper.width());
-                $(".item").css("height", ui.helper.height());
-                $(".item")
-                    .draggable({
-                        containment: 'parent',
-                        drag: function(event,ui){
-                            var $newPosX = (((ui.offset.left - $("#target").offset().left)/836)*100);
-                            var $newPosY = (((ui.offset.top - $("#target").offset().top)/560)*100);
-                            var $wd = ((ui.helper.width())/836)*100;
-                            var $he = ((ui.helper.height())/560)*100;
-                            /*$("header").text("left" + $newPosX + "Top "+ $newPosY);*/
-                        }
-                    })
-                    .resizable({
-                        aspectRatio: true,
-                        containment: "parent",
-                        handles: "ne, se, sw, nw",
-                        create: function(event, ui){
-                            $("#target #dragable div.ui-resizable-se").css({"right": "-5px","bottom": "-5px","background-color": "black","opacity": "0.5","border-radius": "10px","width": "11px","height": "11px"});
-                            $("#target #dragable div.ui-resizable-ne").css({"background-color": "black","opacity": "0.5","border-radius": "10px","width": "11px","height": "11px"});
-                            $("#target #dragable div.ui-resizable-sw").css({"background-color": "black","opacity": "0.5","border-radius": "10px","width": "11px","height": "11px"});
-                            $("#target #dragable div.ui-resizable-nw").css({"background-color": "black","opacity": "0.5","border-radius": "10px","width": "11px","height": "11px"});
-                        },
-                        start:function(){
-                            $("#dragable").css({"border": "2px solid rgb(127, 127, 127)","background-color": "rgba(127, 127, 127, 0.36)"});
-                            $("#target #dragable div.ui-resizable-se").css({"opacity": "0.8"});
-                            $("#target #dragable div.ui-resizable-ne").css({"opacity": "0.8"});
-                            $("#target #dragable div.ui-resizable-sw").css({"opacity": "0.8"});
-                            $("#target #dragable div.ui-resizable-nw").css({"opacity": "0.8"});
-                        },
-                        stop: function(event, ui) {
-                            var w = $(this).width();
-                            var h = $(this).height();
-                            console.log('StopEvent fired')
-                            console.log('Width:'+w);
-                            console.log('Height:'+h);
-                            $("#dragable").css({"border": "none","background-color": "none"});
-                            $("#target #dragable div.ui-resizable-se").css({"opacity": "0.5"});
-                            $("#target #dragable div.ui-resizable-ne").css({"opacity": "0.5"});
-                            $("#target #dragable div.ui-resizable-sw").css({"opacity": "0.5"});
-                            $("#target #dragable div.ui-resizable-nw").css({"opacity": "0.5"});
-                            /*$("header").text('Height: ' + h + 'Width: ' + w);*/
-                        }
-                    });
-            }
+            <script>
+                $("label#add_page").click(function() {
+                    $("input[id='upload_page']").click();
+                });
+                $( "#upload_image" ).change(function() {
+                    $(this).submit();
+                });
+            </script>
+        </div>
+        <nav style="top: 70px;bottom: 0;left: 0;right: 0;overflow-x: hidden;overflow-y: auto;position: absolute;">
+            <?php foreach ($pages as $page) {?>
+            <ol style="/*padding-bottom: 30px;*/margin: 0;padding-left: 0px;">
+                <li style="list-style: none;position: relative;border-bottom: 4px solid #1D6D33;width: 130px;margin: 0 25px 20px 15px;">
+                    <figure>
+                        <div class="img-responsive" style="width: 100%;background-size: cover;background-position: center top;min-height: 90px;;background-repeat: no-repeat;background-image: url(<?php echo base_url('public/img/'.$page->name)?>);"></div>
+                        <a href="#" style="display: block;position: absolute;top: 0;left: 0;right: 0;bottom: 0;cursor: pointer;"></a>
+                        <figcaption style="z-index: 10;width: 100%;background-color: #fff;padding: 4px;word-wrap: break-word;">
+                            <h4 style="font-size: 11px;font-size: 1.1rem;margin: 0px;font-weight: bold;line-height: 1.4rem;color: #46484d;word-break: break-word;cursor: text;"><?php echo $page->name?></h4>
+                            <div>
+                                <div><h5 style="padding-top: 2px;line-height: 1.4rem;color: #82807d;margin: 0px;font-size: 10px;font-size: 1rem;">1 Button</h5></div>
+                            </div>
+                        </figcaption>
+                    </figure>
+                </li>
+            </ol>
+            <?php } ?>
+        </nav>
+    </div>
+    <script>
+        $(function() {
+            /*$.ui.draggable.prototype.destroy = function (div, item) { };*/
+            $( "#dragable" )
+                .draggable({
+                    helper: 'clone',
+                    revert: 'invalid',
+                    appendTo: 'body',
+                    cursor: "pointer"
+                });
+            $("#target").droppable({
+                accept: "#btn-group  div",
+                drop: function(event,ui){
+                    var $newPosX = (((ui.offset.left - $(this).offset().left)/836)*100);
+                    var $newPosY = (((ui.offset.top - $(this).offset().top)/560)*100);
+                    var $wd = ((ui.helper.width())/836)*100;
+                    var $he = ((ui.helper.height())/560)*100;
+                    /*$("header").text("left" + $newPosX+"%" + "Top "+ $newPosY+"%");*/
+
+                    $(this).append($(ui.draggable).clone());
+                    $("#target #dragable").addClass("item");
+                    $(".item").removeClass("ui-draggable");
+                    $(".item").css({"position": "absolute"});
+                    $(".item").css("top", (ui.offset.top - $(this).offset().top));
+                    $(".item").css("left", (ui.offset.left - $(this).offset().left));
+                    $(".item").css("width", ui.helper.width());
+                    $(".item").css("height", ui.helper.height());
+                    $(".item")
+                        .draggable({
+                            containment: 'parent',
+                            drag: function(event,ui){
+                                var $newPosX = (((ui.offset.left - $("#target").offset().left)/836)*100);
+                                var $newPosY = (((ui.offset.top - $("#target").offset().top)/560)*100);
+                                var $wd = ((ui.helper.width())/836)*100;
+                                var $he = ((ui.helper.height())/560)*100;
+                                /*$("header").text("left" + $newPosX + "Top "+ $newPosY);*/
+                            }
+                        })
+                        .resizable({
+                            aspectRatio: true,
+                            containment: "parent",
+                            handles: "ne, se, sw, nw",
+                            create: function(event, ui){
+                                $("#target #dragable div.ui-resizable-se").css({"right": "-5px","bottom": "-5px","background-color": "black","opacity": "0.5","border-radius": "10px","width": "11px","height": "11px"});
+                                $("#target #dragable div.ui-resizable-ne").css({"background-color": "black","opacity": "0.5","border-radius": "10px","width": "11px","height": "11px"});
+                                $("#target #dragable div.ui-resizable-sw").css({"background-color": "black","opacity": "0.5","border-radius": "10px","width": "11px","height": "11px"});
+                                $("#target #dragable div.ui-resizable-nw").css({"background-color": "black","opacity": "0.5","border-radius": "10px","width": "11px","height": "11px"});
+                            },
+                            start:function(){
+                                $("#dragable").css({"border": "2px solid rgb(127, 127, 127)","background-color": "rgba(127, 127, 127, 0.36)"});
+                                $("#target #dragable div.ui-resizable-se").css({"opacity": "0.8"});
+                                $("#target #dragable div.ui-resizable-ne").css({"opacity": "0.8"});
+                                $("#target #dragable div.ui-resizable-sw").css({"opacity": "0.8"});
+                                $("#target #dragable div.ui-resizable-nw").css({"opacity": "0.8"});
+                            },
+                            stop: function(event, ui) {
+                                var w = $(this).width();
+                                var h = $(this).height();
+                                console.log('StopEvent fired')
+                                console.log('Width:'+w);
+                                console.log('Height:'+h);
+                                $("#dragable").css({"border": "none","background-color": "none"});
+                                $("#target #dragable div.ui-resizable-se").css({"opacity": "0.5"});
+                                $("#target #dragable div.ui-resizable-ne").css({"opacity": "0.5"});
+                                $("#target #dragable div.ui-resizable-sw").css({"opacity": "0.5"});
+                                $("#target #dragable div.ui-resizable-nw").css({"opacity": "0.5"});
+                                /*$("header").text('Height: ' + h + 'Width: ' + w);*/
+                            }
+                        });
+                }
+            });
         });
-    });
-</script>
-<div id="mid-panel" style="background-color: #EDEDED;position: absolute;left: 180px;right: 300px;top: 60px;bottom: 0;overflow: visible;z-index: 10;">
-    <!--<div style="width: 80%;margin: 0 auto;padding-top: 30px;">
+    </script>
+    <div id="mid-panel" style="background-color: #EDEDED;position: absolute;left: 180px;right: 300px;top: 60px;bottom: 0;overflow: visible;z-index: 10;">
+        <!--<div style="width: 80%;margin: 0 auto;padding-top: 30px;">
         <nav>
             <ul style="line-height: 160%;margin-bottom: 18px;padding: 0px;">
                 <li id="active"><a href="#">New Pages</a></li>
@@ -495,193 +516,193 @@ if($c->number_of_pages ==0){ ?>
             </div>
         </div>
     </div>-->
-    <div style="width: 836px;margin: 20px auto;height: 560px;">
-        <div id="target" style="position: relative;">
-            <img style="display: block;width: 100%;" src="<?php echo base_url('public/img/testimg.jpg')?>">
+        <div style="max-width: 802px;max-height: 560px;margin: 20px auto;">
+            <div id="target" style="position: relative;">
+                <img style="display: block;width: 100%;height: 100%;" src="<?php echo base_url('public/img/img321cf37d-a80e-4b4b-afc7-e00ac288e4bf.jpeg')?>">
+            </div>
         </div>
+        <a href="#" style="width: 22px;height: 22px;position: absolute;top: 21px;right: 27px;z-index: 50;background: #faf7f5 url('<?php echo base_url('public/img/grid.jpg')?>') no-repeat 50% 50%;"></a>
     </div>
-    <a href="#" style="width: 22px;height: 22px;position: absolute;top: 21px;right: 27px;z-index: 50;background: #faf7f5 url('<?php echo base_url('public/img/grid.jpg')?>') no-repeat 50% 50%;"></a>
-</div>
-<div id="right-panel" style="background-color: #e5e5e5;border-left: 1px solid #e5e5e5;position: absolute;width: 300px;top: 60px;bottom: 0;right: 0;padding: 20px 20px 20px 20px;">
-    <!--<ul style="display: none;top: -3px;border-radius: 0px;text-align: right;width: 300px;" class="user-menu dropdown-menu" role="menu">
-          <li><a href="#">my account</a></li>
-          <li><a href="#">layar creator</a></li>
-          <li><a href="#">messages</a></li>
-          <li><a href="#">logout</a></li>
-      </ul>
-      <div id="tips">
-          <h1 style="text-align: center;font-size: 15px;color: #646464;margin: 0px 0px 10px 0px;font-weight: bold;">Before You Upload..</h1>
-          <ul style="font-size: 12px;font-size: 1.2rem;line-height: 138%;margin-bottom: 25px;padding-left: 20px;padding-right: 20px;">
-              <li>Choose <a>good quality images</a> with clear lines and features.</li>
-              <li>Place easy to spot <a>calls-to-action</a> so your viewers know they can scan.</li>
-              <li>only upload the <a>final version</a> of your pages. it's not possible to change them after publishing.</li>
+    <div id="right-panel" style="background-color: #e5e5e5;border-left: 1px solid #e5e5e5;position: absolute;width: 300px;top: 60px;bottom: 0;right: 0;padding: 20px 20px 20px 20px;">
+        <!--<ul style="display: none;top: -3px;border-radius: 0px;text-align: right;width: 300px;" class="user-menu dropdown-menu" role="menu">
+              <li><a href="#">my account</a></li>
+              <li><a href="#">layar creator</a></li>
+              <li><a href="#">messages</a></li>
+              <li><a href="#">logout</a></li>
           </ul>
-      </div>-->
-    <ul style="display: none;top: -3px;border-radius: 0px;text-align: right;width: 300px;" class="user-menu dropdown-menu" role="menu">
-        <li><a href="#">my account</a></li>
-        <li><a href="#">layar creator</a></li>
-        <li><a href="#">messages</a></li>
-        <li><?php echo anchor('/auth/logout/', 'Logout'); ?></li>
-    </ul>
-    <div>
-        <div style="border-bottom: 1px solid #dcd9d5;margin: 0 0 20px;padding: 0 0 20px;">
-            <select style="height: inherit;width: 100%;font-size: 13px;font-size: 1.3rem;color: #46484d!important;background-color: #fff;border: 1px solid #dcd9d5;border-radius: 8px;padding: 9px 30px 9px 9px;text-align: center;text-transform: uppercase;">
-                <option>suggested buttons</option>
-                <option>custom buttons</option>
-                <option>frequently used buttons</option>
-                <option>buttons by category</option>
-            </select>
-        </div>
-        <div id="btn-group" style="position: absolute;top: 83px;right: 0;width: 282px;bottom: 0;padding: 20px;z-index: 1;overflow: auto;">
-            <ul style="font-size: 12px;padding: 0px;font-size: 1.2rem;line-height: 138%;margin-bottom: 25px;">
-                <li style="list-style: none;">
-                    <div>
-                        <div style="box-shadow: 0 1px 3px rgba(0,0,0,0.1);background: #fff;color: #46484d;padding: 8px 10px;overflow: hidden;margin: 0 0 20px;position: relative;text-align: center;">
-                            <div style="display: inline-block;position: relative;">
-                                <div style="width: 100%;height: 100%;transform: scale(1);">
-                                    <div>
-                                        <div id="dragable" style="cursor: pointer;cursor: hand;z-index: 999;">
-                                            <img  style="height: 100%;width: 100%;cursor: pointer;cursor: hand;z-index: 999;" src="<?php echo base_url('public/img/slider1.jpg')?>">
+          <div id="tips">
+              <h1 style="text-align: center;font-size: 15px;color: #646464;margin: 0px 0px 10px 0px;font-weight: bold;">Before You Upload..</h1>
+              <ul style="font-size: 12px;font-size: 1.2rem;line-height: 138%;margin-bottom: 25px;padding-left: 20px;padding-right: 20px;">
+                  <li>Choose <a>good quality images</a> with clear lines and features.</li>
+                  <li>Place easy to spot <a>calls-to-action</a> so your viewers know they can scan.</li>
+                  <li>only upload the <a>final version</a> of your pages. it's not possible to change them after publishing.</li>
+              </ul>
+          </div>-->
+        <ul style="display: none;top: -3px;border-radius: 0px;text-align: right;width: 300px;" class="user-menu dropdown-menu" role="menu">
+            <li><a href="#">my account</a></li>
+            <li><a href="#">layar creator</a></li>
+            <li><a href="#">messages</a></li>
+            <li><?php echo anchor('/auth/logout/', 'Logout'); ?></li>
+        </ul>
+        <div>
+            <div style="border-bottom: 1px solid #dcd9d5;margin: 0 0 20px;padding: 0 0 20px;">
+                <select style="height: inherit;width: 100%;font-size: 13px;font-size: 1.3rem;color: #46484d!important;background-color: #fff;border: 1px solid #dcd9d5;border-radius: 8px;padding: 9px 30px 9px 9px;text-align: center;text-transform: uppercase;">
+                    <option>suggested buttons</option>
+                    <option>custom buttons</option>
+                    <option>frequently used buttons</option>
+                    <option>buttons by category</option>
+                </select>
+            </div>
+            <div id="btn-group" style="position: absolute;top: 83px;right: 0;width: 282px;bottom: 0;padding: 20px;z-index: 1;overflow: auto;">
+                <ul style="font-size: 12px;padding: 0px;font-size: 1.2rem;line-height: 138%;margin-bottom: 25px;">
+                    <li style="list-style: none;">
+                        <div>
+                            <div style="box-shadow: 0 1px 3px rgba(0,0,0,0.1);background: #fff;color: #46484d;padding: 8px 10px;overflow: hidden;margin: 0 0 20px;position: relative;text-align: center;">
+                                <div style="display: inline-block;position: relative;">
+                                    <div style="width: 100%;height: 100%;transform: scale(1);">
+                                        <div>
+                                            <div id="dragable" style="cursor: pointer;cursor: hand;z-index: 999;">
+                                                <img  style="height: 100%;width: 100%;cursor: pointer;cursor: hand;z-index: 999;" src="<?php echo base_url('public/img/slider1.jpg')?>">
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
+                                <div><div style="font-size: 10px;font-size: 1rem;margin: 12px 0 0 0;text-transform: uppercase;line-height: 100%;font-style: italic;">Show a carousel</div></div>
                             </div>
-                            <div><div style="font-size: 10px;font-size: 1rem;margin: 12px 0 0 0;text-transform: uppercase;line-height: 100%;font-style: italic;">Show a carousel</div></div>
                         </div>
-                    </div>
-                </li>
-                <li style="list-style: none;">
-                    <div>
-                        <div style="box-shadow: 0 1px 3px rgba(0,0,0,0.1);background: #fff;color: #46484d;padding: 8px 10px;overflow: hidden;margin: 0 0 20px;position: relative;text-align: center;">
-                            <div style=";-webkit-transition: opacity .3s linear .15s;-moz-transition: opacity .3s linear .15s;transition: opacity .3s linear .15s;display: inline-block;position: relative;opacity: 1;">
-                                <div>
+                    </li>
+                    <li style="list-style: none;">
+                        <div>
+                            <div style="box-shadow: 0 1px 3px rgba(0,0,0,0.1);background: #fff;color: #46484d;padding: 8px 10px;overflow: hidden;margin: 0 0 20px;position: relative;text-align: center;">
+                                <div style=";-webkit-transition: opacity .3s linear .15s;-moz-transition: opacity .3s linear .15s;transition: opacity .3s linear .15s;display: inline-block;position: relative;opacity: 1;">
                                     <div>
                                         <div>
-                                            <img style="width: 100%;height: 100%;" src="<?php echo base_url('public/img/website.jpg')?>">
+                                            <div>
+                                                <img style="width: 100%;height: 100%;" src="<?php echo base_url('public/img/website.jpg')?>">
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
+                                <div><div style="font-size: 10px;font-size: 1rem;margin: 12px 0 0 0;text-transform: uppercase;line-height: 100%;font-style: italic;">Open a Website</div></div>
                             </div>
-                            <div><div style="font-size: 10px;font-size: 1rem;margin: 12px 0 0 0;text-transform: uppercase;line-height: 100%;font-style: italic;">Open a Website</div></div>
                         </div>
-                    </div>
-                </li>
-                <li style="list-style: none;">
-                    <div>
-                        <div style="width: 235px;box-shadow: 0 1px 3px rgba(0,0,0,0.1);background: #fff;color: #46484d;padding: 8px 10px;overflow: hidden;margin: 0 0 20px;position: relative;text-align: center;">
-                            <div style=";-webkit-transition: opacity .3s linear .15s;-moz-transition: opacity .3s linear .15s;transition: opacity .3s linear .15s;display: inline-block;position: relative;opacity: 1;">
-                                <div>
+                    </li>
+                    <li style="list-style: none;">
+                        <div>
+                            <div style="width: 235px;box-shadow: 0 1px 3px rgba(0,0,0,0.1);background: #fff;color: #46484d;padding: 8px 10px;overflow: hidden;margin: 0 0 20px;position: relative;text-align: center;">
+                                <div style=";-webkit-transition: opacity .3s linear .15s;-moz-transition: opacity .3s linear .15s;transition: opacity .3s linear .15s;display: inline-block;position: relative;opacity: 1;">
                                     <div>
                                         <div>
-                                            <img style="width: 100%;height: 100%;" src="<?php echo base_url('public/img/playvideo.jpg')?>">
+                                            <div>
+                                                <img style="width: 100%;height: 100%;" src="<?php echo base_url('public/img/playvideo.jpg')?>">
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
+                                <div><div style="font-size: 10px;font-size: 1rem;margin: 12px 0 0 0;text-transform: uppercase;line-height: 100%;font-style: italic;">play video</div></div>
                             </div>
-                            <div><div style="font-size: 10px;font-size: 1rem;margin: 12px 0 0 0;text-transform: uppercase;line-height: 100%;font-style: italic;">play video</div></div>
                         </div>
-                    </div>
-                </li>
-                <li style="list-style: none;">
-                    <div>
-                        <div style="box-shadow: 0 1px 3px rgba(0,0,0,0.1);background: #fff;color: #46484d;padding: 8px 10px;overflow: hidden;margin: 0 0 20px;position: relative;text-align: center;">
-                            <div style=";-webkit-transition: opacity .3s linear .15s;-moz-transition: opacity .3s linear .15s;transition: opacity .3s linear .15s;display: inline-block;position: relative;opacity: 1;">
-                                <div>
+                    </li>
+                    <li style="list-style: none;">
+                        <div>
+                            <div style="box-shadow: 0 1px 3px rgba(0,0,0,0.1);background: #fff;color: #46484d;padding: 8px 10px;overflow: hidden;margin: 0 0 20px;position: relative;text-align: center;">
+                                <div style=";-webkit-transition: opacity .3s linear .15s;-moz-transition: opacity .3s linear .15s;transition: opacity .3s linear .15s;display: inline-block;position: relative;opacity: 1;">
                                     <div>
                                         <div>
-                                            <img style="width: 100%;height: 100%;" src="<?php echo base_url('public/img/audio.jpg')?>">
+                                            <div>
+                                                <img style="width: 100%;height: 100%;" src="<?php echo base_url('public/img/audio.jpg')?>">
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
+                                <div><div style="font-size: 10px;font-size: 1rem;margin: 12px 0 0 0;text-transform: uppercase;line-height: 100%;font-style: italic;">play audio</div></div>
                             </div>
-                            <div><div style="font-size: 10px;font-size: 1rem;margin: 12px 0 0 0;text-transform: uppercase;line-height: 100%;font-style: italic;">play audio</div></div>
                         </div>
-                    </div>
-                </li>
-                <li style="list-style: none;">
-                    <div>
-                        <div style="box-shadow: 0 1px 3px rgba(0,0,0,0.1);background: #fff;color: #46484d;padding: 8px 10px;overflow: hidden;margin: 0 0 20px;position: relative;text-align: center;">
-                            <div style=";-webkit-transition: opacity .3s linear .15s;-moz-transition: opacity .3s linear .15s;transition: opacity .3s linear .15s;display: inline-block;position: relative;opacity: 1;">
-                                <div>
+                    </li>
+                    <li style="list-style: none;">
+                        <div>
+                            <div style="box-shadow: 0 1px 3px rgba(0,0,0,0.1);background: #fff;color: #46484d;padding: 8px 10px;overflow: hidden;margin: 0 0 20px;position: relative;text-align: center;">
+                                <div style=";-webkit-transition: opacity .3s linear .15s;-moz-transition: opacity .3s linear .15s;transition: opacity .3s linear .15s;display: inline-block;position: relative;opacity: 1;">
                                     <div>
                                         <div>
-                                            <img style="width: 100%;height: 100%;" src="<?php echo base_url('public/img/buy.jpg')?>">
+                                            <div>
+                                                <img style="width: 100%;height: 100%;" src="<?php echo base_url('public/img/buy.jpg')?>">
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
+                                <div><div style="font-size: 10px;font-size: 1rem;margin: 12px 0 0 0;text-transform: uppercase;line-height: 100%;font-style: italic;">buy a product</div></div>
                             </div>
-                            <div><div style="font-size: 10px;font-size: 1rem;margin: 12px 0 0 0;text-transform: uppercase;line-height: 100%;font-style: italic;">buy a product</div></div>
                         </div>
-                    </div>
-                </li>
-                <li style="list-style: none;">
-                    <div>
-                        <div style="box-shadow: 0 1px 3px rgba(0,0,0,0.1);background: #fff;color: #46484d;padding: 8px 10px;overflow: hidden;margin: 0 0 20px;position: relative;text-align: center;">
-                            <div style=";-webkit-transition: opacity .3s linear .15s;-moz-transition: opacity .3s linear .15s;transition: opacity .3s linear .15s;display: inline-block;position: relative;opacity: 1;">
-                                <div>
+                    </li>
+                    <li style="list-style: none;">
+                        <div>
+                            <div style="box-shadow: 0 1px 3px rgba(0,0,0,0.1);background: #fff;color: #46484d;padding: 8px 10px;overflow: hidden;margin: 0 0 20px;position: relative;text-align: center;">
+                                <div style=";-webkit-transition: opacity .3s linear .15s;-moz-transition: opacity .3s linear .15s;transition: opacity .3s linear .15s;display: inline-block;position: relative;opacity: 1;">
                                     <div>
                                         <div>
-                                            <img style="width: 100%;height: 100%;" src="<?php echo base_url('public/img/call.jpg')?>">
+                                            <div>
+                                                <img style="width: 100%;height: 100%;" src="<?php echo base_url('public/img/call.jpg')?>">
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
+                                <div><div style="font-size: 10px;font-size: 1rem;margin: 12px 0 0 0;text-transform: uppercase;line-height: 100%;font-style: italic;">call a number</div></div>
                             </div>
-                            <div><div style="font-size: 10px;font-size: 1rem;margin: 12px 0 0 0;text-transform: uppercase;line-height: 100%;font-style: italic;">call a number</div></div>
                         </div>
-                    </div>
-                </li>
-                <li style="list-style: none;">
-                    <div>
-                        <div style="box-shadow: 0 1px 3px rgba(0,0,0,0.1);background: #fff;color: #46484d;padding: 8px 10px;overflow: hidden;margin: 0 0 20px;position: relative;text-align: center;">
-                            <div style=";-webkit-transition: opacity .3s linear .15s;-moz-transition: opacity .3s linear .15s;transition: opacity .3s linear .15s;display: inline-block;position: relative;opacity: 1;">
-                                <div>
+                    </li>
+                    <li style="list-style: none;">
+                        <div>
+                            <div style="box-shadow: 0 1px 3px rgba(0,0,0,0.1);background: #fff;color: #46484d;padding: 8px 10px;overflow: hidden;margin: 0 0 20px;position: relative;text-align: center;">
+                                <div style=";-webkit-transition: opacity .3s linear .15s;-moz-transition: opacity .3s linear .15s;transition: opacity .3s linear .15s;display: inline-block;position: relative;opacity: 1;">
                                     <div>
                                         <div>
-                                            <img style="width: 100%;height: 100%;" src="<?php echo base_url('public/img/fbshare.jpg')?>">
+                                            <div>
+                                                <img style="width: 100%;height: 100%;" src="<?php echo base_url('public/img/fbshare.jpg')?>">
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
+                                <div><div style="font-size: 10px;font-size: 1rem;margin: 12px 0 0 0;text-transform: uppercase;line-height: 100%;font-style: italic;">share a message on facebook</div></div>
                             </div>
-                            <div><div style="font-size: 10px;font-size: 1rem;margin: 12px 0 0 0;text-transform: uppercase;line-height: 100%;font-style: italic;">share a message on facebook</div></div>
                         </div>
-                    </div>
-                </li>
-                <li style="list-style: none;">
-                    <div>
-                        <div style="box-shadow: 0 1px 3px rgba(0,0,0,0.1);background: #fff;color: #46484d;padding: 8px 10px;overflow: hidden;margin: 0 0 20px;position: relative;text-align: center;">
-                            <div style=";-webkit-transition: opacity .3s linear .15s;-moz-transition: opacity .3s linear .15s;transition: opacity .3s linear .15s;display: inline-block;position: relative;opacity: 1;">
-                                <div>
+                    </li>
+                    <li style="list-style: none;">
+                        <div>
+                            <div style="box-shadow: 0 1px 3px rgba(0,0,0,0.1);background: #fff;color: #46484d;padding: 8px 10px;overflow: hidden;margin: 0 0 20px;position: relative;text-align: center;">
+                                <div style=";-webkit-transition: opacity .3s linear .15s;-moz-transition: opacity .3s linear .15s;transition: opacity .3s linear .15s;display: inline-block;position: relative;opacity: 1;">
                                     <div>
                                         <div>
-                                            <img style="width: 100%;height: 100%;" src="<?php echo base_url('public/img/twshare.jpg')?>">
+                                            <div>
+                                                <img style="width: 100%;height: 100%;" src="<?php echo base_url('public/img/twshare.jpg')?>">
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
+                                <div><div style="font-size: 10px;font-size: 1rem;margin: 12px 0 0 0;text-transform: uppercase;line-height: 100%;font-style: italic;">share a message on twitter</div></div>
                             </div>
-                            <div><div style="font-size: 10px;font-size: 1rem;margin: 12px 0 0 0;text-transform: uppercase;line-height: 100%;font-style: italic;">share a message on twitter</div></div>
                         </div>
-                    </div>
-                </li>
-                <li style="list-style: none;">
-                    <div>
-                        <div style="width: 235px;box-shadow: 0 1px 3px rgba(0,0,0,0.1);background: #fff;color: #46484d;padding: 8px 10px;overflow: hidden;margin: 0 0 20px;position: relative;text-align: center;">
-                            <div style="-webkit-transition: opacity .3s linear .15s;-moz-transition: opacity .3s linear .15s;transition: opacity .3s linear .15s;display: inline-block;position: relative;opacity: 1;">
-                                <div>
+                    </li>
+                    <li style="list-style: none;">
+                        <div>
+                            <div style="width: 235px;box-shadow: 0 1px 3px rgba(0,0,0,0.1);background: #fff;color: #46484d;padding: 8px 10px;overflow: hidden;margin: 0 0 20px;position: relative;text-align: center;">
+                                <div style="-webkit-transition: opacity .3s linear .15s;-moz-transition: opacity .3s linear .15s;transition: opacity .3s linear .15s;display: inline-block;position: relative;opacity: 1;">
                                     <div>
                                         <div>
-                                            <img style="width: 100%;height: 100%;" src="<?php echo base_url('public/img/twiterfeed.jpg')?>">
+                                            <div>
+                                                <img style="width: 100%;height: 100%;" src="<?php echo base_url('public/img/twiterfeed.jpg')?>">
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
+                                <div><div style="font-size: 10px;font-size: 1rem;margin: 12px 0 0 0;text-transform: uppercase;line-height: 100%;font-style: italic;">show a twitter feed</div></div>
                             </div>
-                            <div><div style="font-size: 10px;font-size: 1rem;margin: 12px 0 0 0;text-transform: uppercase;line-height: 100%;font-style: italic;">show a twitter feed</div></div>
                         </div>
-                    </div>
-                </li>
-            </ul>
+                    </li>
+                </ul>
+            </div>
         </div>
     </div>
-</div>
 <?php } ?>
 </div>
 <div role="tabpanel" class="tab-pane" id="test">
@@ -689,7 +710,7 @@ if($c->number_of_pages ==0){ ?>
         <div style="height: 45px;text-align: left;"></div>
         <nav style="top: 70px;bottom: 0;left: 0;right: 0;overflow-x: hidden;overflow-y: auto;position: absolute;">
             <ol style="padding-bottom: 30px;margin: 0;padding-left: 0px;">
-                <li style="list-style: none;position: relative;border-bottom: 4px solid #00afcc;width: 130px;margin: 0 25px 20px 15px;">
+                <li style="list-style: none;position: relative;border-bottom: 4px solid #1D6D33;width: 130px;margin: 0 25px 20px 15px;">
                     <figure>
                         <div style="width: 100%;background-size: cover;background-position: center top;min-height: 90px;;background-repeat: no-repeat;background-image: url(<?php echo base_url('public/img/pagelistimg.jpg')?>);"></div>
                         <a href="#" style="display: block;position: absolute;top: 0;left: 0;right: 0;bottom: 0;cursor: pointer;"></a>

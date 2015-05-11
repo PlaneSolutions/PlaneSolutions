@@ -73,18 +73,24 @@
             -ms-user-select: none;
             user-select: none;
         }
+        .btn-info{
+            background-color: #1D6D33;
+        }
+        .btn-info:hover{
+            background-color: #1D6D33;
+        }
     </style>
 </head>
 <body>
-<header style="border-bottom: 1px solid #dcd9d5;height: 60px;background: #fff;position: relative;z-index: 2;">
+<header style="border-bottom: 1px solid #dcd9d5;height: 60px;background: #1D6D33;position: relative;z-index: 2;">
     <div id="logo" style="height: 60px;float: left;padding: 0 10px 0 20px;overflow: hidden;">
-        <span style="position: relative;top: 25px;font-size: 20px;"><a href="<?php echo site_url('main')?>" style="text-decoration: none;color: inherit;"><img  alt="GuidAR Logo" src="<?php echo base_url('public/img/logog.jpg')?>" style="width: 110px;height: 50px;position: relative;top: -20px;"></a></span>
+        <span style="position: relative;top: 25px;font-size: 20px;"><a href="<?php echo site_url('welcome')?>" style="text-decoration: none;color: inherit;"><img  alt="GuidAR Logo" src="<?php echo base_url('public/img/logo.png')?>" style="max-width: 65px;max-height: 50px;position: relative;top: -20px;"></a></span>
     </div>
-    <h1 style="font-size: 13px;text-transform: uppercase;font-size: 1.3rem;color: #82807d;display: inline-block;margin: 32px 0 0 0;vertical-align: middle;">Creator</h1>
+    <h1 style="color: #ffffff;font-size: 13px;text-transform: uppercase;font-size: 1.3rem;display: inline-block;margin: 32px 0 0 0;vertical-align: middle;">Creator</h1>
     <div style="padding-right: 25px;position: absolute;top: 0px;right: 0;text-align: right;display: block;width: 25%;height: 60px;">
         <div style="cursor: pointer;margin: 20px 10px 0px 15px;color: #46484d;width: 300px;line-height: 30px;padding: 5px;">
             <div id="user-name" class="dropdown-toggle" data-toggle="dropdown">
-                <span data-bind="label"><?php echo $username; ?></span>&nbsp;<span class="caret"></span>
+                <span data-bind="label" style="color: #ffffff;"><?php echo $username; ?></span>&nbsp;<span class="caret" style="color: #ffffff;"></span>
             </div>
         </div>
     </div>
@@ -99,7 +105,7 @@
         <div class="title" style="/*margin: 30px 20px 0px 20px;*/border-bottom: 1px solid #dcd9d5;line-height: 50px;">
             <b>CAMPAING OVERVIEW</b>
             <div style="display: inline-block;cursor: pointer;cursor: hand;">
-                <span style="margin-left: 2em;background-color: #02b4ca;width: 10px;height: 10px;margin-right: 5px;display: inline-block;"></span>
+                <span style="margin-left: 2em;background-color: #1D6D33;width: 10px;height: 10px;margin-right: 5px;display: inline-block;"></span>
                 <span>DRAFT</span>
                 <span  style="background-color: lightgrey;border-radius: 10px;margin-left: 5px;display: inline-block;width: 20px;height: 20px;line-height: 20px;text-align: center;">2</span>
             </div>
@@ -133,12 +139,12 @@
             <?php foreach($campaings as $campaing){?>
                 <div class="panel-body" style="text-transform: none;display: inline-block;width: 255px;height: 325px;overflow: hidden;">
                     <a href="<?php echo site_url('welcome/editcampaign/edit/'.$campaing->id)?>" class="thumbnail" style="text-decoration: none;background-color: #FFFFFF;padding: 0px">
-                        <div style="position: relative;background: url(<?php if($campaing->number_of_pages == 0)echo base_url('public/img/nopages.png'); else echo base_url('public/img/12345.jpg'); ?>);background-size: auto 100%;background-position-x: 50%;background-repeat: no-repeat;height: 247px;"></div>
+                        <div style="position: relative;background: url(<?php if($campaing->number_of_pages == 0)echo base_url('public/img/nopages.png'); else echo base_url('public/img/'.$campaing->thumbnail_img); ?>);background-size: auto 100%;background-position-x: 50%;background-repeat: no-repeat;height: 247px;"></div>
                         <div class="detail" style="cursor: default;position: relative;padding: 5px 5px 5px 10px;color: rgb(114, 114, 114);float: right;overflow: hidden;width: 225px;left: 1px;height: 50px;border: 1px solid rgb(211, 211, 211);top: 0px;background: white;">
                             <div>
                                 <b><?php echo $campaing->title ?></b><br>
                                 <div id="camp-detail">
-                                    <span style="background-color: #07e5aa;width: 12px;height: 12px;border-radius: 10px;display: inline-block;"></span>
+                                    <span style="background-color: #1D6D33;width: 12px;height: 12px;border-radius: 10px;display: inline-block;"></span>
                                     <span>Draft</span>
                                     <div id="image-icon" class="glyphicon glyphicon-picture" style="float: right;"><span style="margin-left: 5px;"><?php echo $campaing->number_of_pages?></span></div>
                                 </div>
@@ -148,7 +154,7 @@
                                 <div class='glyphicon glyphicon-trash' style='cursor: pointer;float: right;'></div>
                                 <b><?php echo $campaing->title ?></b><br><br>
                                 <div id='camp-detail'>
-                                    <span style='background-color: #07e5aa;width: 12px;height: 12px;border-radius: 10px;display: inline-block;'></span>
+                                    <span style='background-color: #1D6D33;width: 12px;height: 12px;border-radius: 10px;display: inline-block;'></span>
                                     <span> Draft</span>
                                 </div>
                                 <div style='left: -1px;' class='glyphicon glyphicon-cog'>
@@ -175,12 +181,12 @@
             <li><a href="#">messages</a></li>
             <li><?php echo anchor('/auth/logout/', 'Logout'); ?></li>
         </ul>
-        <div id="credit-info" style="padding: 15px 5px 15px 5px;border-top: 5px solid #76b8be;background: white;">
+        <div id="credit-info" style="padding: 15px 5px 15px 5px;border-top: 5px solid #1D6D33;background: white;">
             <div style="text-align: center;padding: 10px 2px 10px 2px;border-bottom: 1px solid gray;margin: 0px 10px 0px 10px;"><b>YOUR PRO CREDITS</b></div>
             <div style="text-align: center;line-height: 60px;font-size: 30px;">0</div>
-            <button class="btn btn-sm btn-info" style="width: 90%;margin-left: 12px;border-radius: 10px;">BUY CREDITS</button>
+            <button class="btn btn-sm btn-info" style="background-color: #1D6D33;width: 90%;margin-left: 12px;border-radius: 10px;">BUY CREDITS</button>
         </div>
-        <div id="pusblish-campaing" style="height: 400px;margin-top: 15px;padding: 15px 5px 15px 5px;border-top: 5px solid #76b8be;background: white;">
+        <div id="pusblish-campaing" style="height: 400px;margin-top: 15px;padding: 15px 5px 15px 5px;border-top: 5px solid #1D6D33;background: white;">
             <div style="text-align: center;padding: 10px 2px 10px 2px;margin: 0px 10px 0px 10px;">
                 <span><b>PUBLISH CAMPAING</b><br><span style="text-transform: none;font-size: 12px;position: relative;top: 2px;">It seems like it's ready, Publish it now!</span></span>
                 <div style="height: 200px;margin-top: 20px;margin-bottom: 20px;position: relative;background: url(<?php echo base_url('public/img/12345.jpg')?>);background-size: auto 100%;background-position-x: 50%;background-repeat: no-repeat;border-radius: 50%;"></div>

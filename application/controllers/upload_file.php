@@ -5,16 +5,17 @@ class Upload_File extends CI_Controller {
         $this->load->helper('form');
         $this->load->helper('url');
         $this->load->library('tank_auth');
+        $this->load->library('upload');
     }
     public function do_upload($campaign_id){
         $type = 'marker';
         $config = array(
-            'upload_path' => "public/img/uploads",
+            'upload_path' => "public/img",
             'allowed_types' => "jpg|png|jpeg",
             'overwrite' => TRUE,
             'max_size' => "2048000", // Can be set to particular file size , here it is 2 MB(2048 Kb)
-            'max_height' => "768",
-            'max_width' => "1024"
+            'max_height' => "1600",
+            'max_width' => "1600"
         );
         $this->load->library('upload', $config);
         $this->upload->initialize($config);
