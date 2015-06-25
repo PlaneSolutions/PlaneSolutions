@@ -227,35 +227,41 @@ $upload_form = array(
 </head>
 <body>
 <div class="outer-container" style="overflow: hidden;">
-<header style="border-bottom: 1px solid #1D6D33;height: 60px;background: #1D6D33;position: relative;z-index: 2;">
-    <div id="logo" style="height: 60px;float: left;padding: 0 10px 0 20px;overflow: hidden;border-right: 1px solid #fff;">
-        <span style="position: relative;top: 25px;font-size: 20px;"><a href="<?php echo site_url('welcome')?>" style="text-decoration: none;color: inherit;"><img  alt="GuidAR Logo" src="<?php echo base_url('public/img/logo.png')?>" style="/*max-width: 65px;max-height: 50px;*/position: relative;top: -20px;"></a></span>
-    </div>
-    <h1 style="color: #ffffff;min-width: 110px;max-width: 180px;float: left;top: 15px;position: relative;font-size: 1.3rem;margin-left: 25px;margin-right: 25px;"><?php echo $campaing[0]->title ?></h1>
-    <div role="tabpanel" style="display: inline-block;position: absolute;top: 18px;">
-        <!-- Nav tabs -->
-        <ul class="nav nav-tabs" role="tablist" id="mytab">
-            <li role="presentation" class="<?php echo ($tab == 'settings') ? 'active' : ''; ?>"><a href="#settings"  class="glyphicon glyphicon-cog" aria-controls="settings" role="tab" data-toggle="tab"></a></li>
-            <li role="presentation" class="<?php echo ($tab == 'edit') ? 'active' : ''; ?>"><a href="#edit"  class="activate_tab" aria-controls="edit" role="tab" data-toggle="tab">Edit</a></li>
-            <?php if($campaing[0]->number_of_pages !=0){?>
-                <li role="presentation" class="<?php echo ($tab == 'test') ? 'active' : ''; ?>" id="testc"><a href="#test"  aria-controls="test" role="tab" data-toggle="tab">Test</a></li>
-            <?php } ?>
-        </ul>
-    </div>
-    <div id="button" style="position: absolute;top: 0;right: 320px;line-height: 24px;padding-top: 16px;">
-        <button class="btn btn-sm btn-block" style="padding-left: 45px;padding-right: 45px;border-radius: 10px;">PUBLISH</button>
-    </div>
-    <div style="padding-right: 25px;position: absolute;top: 0px;right: 0;text-align: right;display: block;width: 25%;height: 60px;">
-        <div style="cursor: pointer;margin: 20px 10px 0px 15px;color: #46484d;width: 300px;line-height: 30px;padding: 5px;">
-            <div id="user-name" class="dropdown-toggle" data-toggle="dropdown">
-                <span data-bind="label" style="color: #ffffff;"><?php echo $username; ?></span>&nbsp;<span class="caret" style="color: #ffffff;"></span>
+    <header style="border-bottom: 1px solid #1D6D33;height: 60px;background: #1D6D33;position: relative;z-index: 2;">
+        <div id="logo" style="height: 60px;float: left;padding: 0 10px 0 20px;overflow: hidden;border-right: 1px solid #fff;">
+            <span style="position: relative;top: 25px;font-size: 20px;"><a href="<?php echo site_url('welcome')?>" style="text-decoration: none;color: inherit;"><img  alt="GuidAR Logo" src="<?php echo base_url('public/img/logo.png')?>" style="/*max-width: 65px;max-height: 50px;*/position: relative;top: -20px;"></a></span>
+        </div>
+        <h1 style="color: #ffffff;min-width: 110px;max-width: 180px;float: left;top: 15px;position: relative;font-size: 1.3rem;margin-left: 25px;margin-right: 25px;"><?php echo $campaing[0]->title ?></h1>
+        <div role="tabpanel" style="display: inline-block;position: absolute;top: 18px;">
+            <!-- Nav tabs -->
+            <ul class="nav nav-tabs" role="tablist" id="mytab">
+                <li role="presentation" class="<?php echo ($tab == 'settings') ? 'active' : ''; ?>"><a href="#settings"  class="glyphicon glyphicon-cog" aria-controls="settings" role="tab" data-toggle="tab"></a></li>
+                <li role="presentation" class="<?php echo ($tab == 'edit') ? 'active' : ''; ?>"><a href="#edit"  class="activate_tab" aria-controls="edit" role="tab" data-toggle="tab">Edit</a></li>
+                <?php if($campaing[0]->number_of_pages !=0){?>
+                    <li role="presentation" class="<?php echo ($tab == 'test') ? 'active' : ''; ?>" id="testc"><a href="#test"  aria-controls="test" role="tab" data-toggle="tab">Test</a></li>
+                <?php } ?>
+            </ul>
+        </div>
+        <div id="button" style="position: absolute;top: 0;right: 320px;line-height: 24px;padding-top: 16px;">
+            <button class="btn btn-sm btn-block" style="padding-left: 45px;padding-right: 45px;border-radius: 10px;">PUBLISH</button>
+        </div>
+        <div style="padding-right: 25px;position: absolute;top: 0px;right: 0;text-align: right;display: block;width: 25%;height: 60px;">
+            <div style="cursor: pointer;margin: 20px 10px 0px 15px;color: #46484d;width: 300px;line-height: 30px;padding: 5px;">
+                <div id="user-name" class="dropdown-toggle" data-toggle="dropdown">
+                    <span data-bind="label" style="color: #ffffff;"><?php echo $username; ?></span>&nbsp;<span class="caret" style="color: #ffffff;"></span>
+                </div>
             </div>
         </div>
-    </div>
+</div>
 </header>
 <script>
     $( "#user-name" ).click(function() {
         $( ".user-menu" ).toggle();
+    });
+    $(document).on('click', function(event) {
+        if (!$(event.target).closest('#user-name').length) {
+            $(".user-menu").hide();
+        }
     });
 </script>
 <!-- Tab panes -->
@@ -407,31 +413,54 @@ if($c->number_of_pages == 0){ ?>
                 $( "#upload_image" ).change(function() {
                     $(this).submit();
                 });
+                $(function() {
+                    $('.image-data').click( function() {
+                        /*alert($(this).attr('href'));*/
+                        var path = $(this).attr('data-path');
+                        var width = ($(this).attr('data-width'));
+                        $('.imgchange').attr("style","width:"+width+"px;"+"max-width: 802px;max-height: 560px;margin: 20px auto;");
+                        $('.imgchange>div>img').attr("src", path);
+                    });
+                });
             </script>
         </div>
         <nav style="top: 70px;bottom: 0;left: 0;right: 0;overflow-x: hidden;overflow-y: auto;position: absolute;">
-            <?php foreach ($pages as $page) {?>
-            <ol style="/*padding-bottom: 30px;*/margin: 0;padding-left: 0px;">
-                <li style="list-style: none;position: relative;border-bottom: 4px solid #1D6D33;width: 130px;margin: 0 25px 20px 15px;">
-                    <figure>
-                        <div class="img-responsive" style="width: 100%;background-size: cover;background-position: center top;min-height: 90px;;background-repeat: no-repeat;background-image: url(<?php echo base_url('public/img/'.$page->name)?>);"></div>
-                        <a href="#" style="display: block;position: absolute;top: 0;left: 0;right: 0;bottom: 0;cursor: pointer;"></a>
-                        <figcaption style="z-index: 10;width: 100%;background-color: #fff;padding: 4px;word-wrap: break-word;">
-                            <h4 style="font-size: 11px;font-size: 1.1rem;margin: 0px;font-weight: bold;line-height: 1.4rem;color: #46484d;word-break: break-word;cursor: text;"><?php echo $page->name?></h4>
-                            <div>
-                                <div><h5 style="padding-top: 2px;line-height: 1.4rem;color: #82807d;margin: 0px;font-size: 10px;font-size: 1rem;">1 Button</h5></div>
-                            </div>
-                        </figcaption>
-                    </figure>
-                </li>
-            </ol>
+            <?php foreach ($pages as $page) {
+                $width = 0;
+                $h = $page->height;
+                $w = $page->width;
+                $var = 560/$h;
+                $var1 = 1 - $var;
+                $wvar = $var1 * $w;
+                $width = $w - $wvar;
+                if($width < 0){
+                    $width = $width * (-1);
+                }
+                if($page->name == $campaing['0']->thumbnail_img){
+                    $fwidth = $width;
+                }
+                ?>
+                <ol data-imgid="<?php $page->id?>" data-width="<?php echo $width ?>" data-path="<?php echo base_url('public/img/'.$page->name)?>" class="image-data" style="/*padding-bottom: 30px;*/margin: 0;padding-left: 0px;">
+                    <li style="list-style: none;position: relative;border-bottom: 4px solid #1D6D33;width: 130px;margin: 0 25px 20px 15px;">
+                        <figure>
+                            <div class="img-responsive" style="width: 100%;background-size: cover;background-position: center top;min-height: 90px;;background-repeat: no-repeat;background-image: url(<?php echo base_url('public/img/'.$page->name)?>);"></div>
+                            <a class="change_img" data-link="<?php echo site_url('welcome/editcampaign/edit/'.$page->campaing_id .'/'.$page->name)?>" href="<?php echo site_url('welcome/editcampaign/edit/'.$page->campaing_id .'/'.$page->name)?>" style="display: block;position: absolute;top: 0;left: 0;right: 0;bottom: 0;cursor: pointer;"></a>
+                            <figcaption style="z-index: 10;width: 100%;background-color: #fff;padding: 4px;word-wrap: break-word;">
+                                <h4 style="font-size: 11px;font-size: 1.1rem;margin: 0px;font-weight: bold;line-height: 1.4rem;color: #46484d;word-break: break-word;cursor: text;"><?php echo $page->name?></h4>
+                                <div>
+                                    <div><h5 style="padding-top: 2px;line-height: 1.4rem;color: #82807d;margin: 0px;font-size: 10px;font-size: 1rem;">1 Button</h5></div>
+                                </div>
+                            </figcaption>
+                        </figure>
+                    </li>
+                </ol>
             <?php } ?>
         </nav>
     </div>
     <script>
         $(function() {
             /*$.ui.draggable.prototype.destroy = function (div, item) { };*/
-            $( "#dragable" )
+            $( ".dragable" )
                 .draggable({
                     helper: 'clone',
                     revert: 'invalid',
@@ -441,29 +470,44 @@ if($c->number_of_pages == 0){ ?>
             $("#target").droppable({
                 accept: "#btn-group  div",
                 drop: function(event,ui){
-                    var $newPosX = (((ui.offset.left - $(this).offset().left)/836)*100);
-                    var $newPosY = (((ui.offset.top - $(this).offset().top)/560)*100);
-                    var $wd = ((ui.helper.width())/836)*100;
-                    var $he = ((ui.helper.height())/560)*100;
+                    var newPosX = (((ui.offset.left - $(this).offset().left)/836)*100);
+                    var newPosY = (((ui.offset.top - $(this).offset().top)/560)*100);
+                    var wd = ((ui.helper.width())/836)*100;
+                    var he = ((ui.helper.height())/560)*100;
                     /*$("header").text("left" + $newPosX+"%" + "Top "+ $newPosY+"%");*/
 
                     $(this).append($(ui.draggable).clone());
-                    $("#target #dragable").addClass("item");
-                    $(".item").removeClass("ui-draggable");
-                    $(".item").css({"position": "absolute"});
-                    $(".item").css("top", (ui.offset.top - $(this).offset().top));
-                    $(".item").css("left", (ui.offset.left - $(this).offset().left));
-                    $(".item").css("width", ui.helper.width());
-                    $(".item").css("height", ui.helper.height());
-                    $(".item")
+                    $("#target .dragable").addClass("item")
+                        .removeClass("ui-draggable")
+                        .css({"position": "absolute"})
+                        .css("top", (ui.offset.top - $(this).offset().top))
+                        .css("left", (ui.offset.left - $(this).offset().left))
+                        .css("width", ui.helper.width())
+                        .css("height", ui.helper.height())
                         .draggable({
                             containment: 'parent',
                             drag: function(event,ui){
-                                var $newPosX = (((ui.offset.left - $("#target").offset().left)/836)*100);
-                                var $newPosY = (((ui.offset.top - $("#target").offset().top)/560)*100);
-                                var $wd = ((ui.helper.width())/836)*100;
-                                var $he = ((ui.helper.height())/560)*100;
-                                /*$("header").text("left" + $newPosX + "Top "+ $newPosY);*/
+                                var newPosX = (((ui.offset.left - $("#target").offset().left)/836)*100);
+                                var newPosY = (((ui.offset.top - $("#target").offset().top)/560)*100);
+                                var wd = ((ui.helper.width())/836)*100;
+                                var he = ((ui.helper.height())/560)*100;
+                                //$("header").text("left" + newPosX + "Top "+ newPosY);
+                                var data = {
+                                    img_id: $('.image-data').attr('data-imgid'),
+                                    url: "",
+                                    posx: newPosX,
+                                    posy: newPosY,
+                                    width: wd,
+                                    height: he
+                                };
+                                $.ajax({
+                                    url: "<?php echo site_url('content/add'); ?>",
+                                    type: 'POST',
+                                    data: data,
+                                    success: function(msg) {
+                                     alert("<?php echo site_url('content/add'); ?>");
+                                     }
+                                });
                             }
                         })
                         .resizable({
@@ -471,17 +515,17 @@ if($c->number_of_pages == 0){ ?>
                             containment: "parent",
                             handles: "ne, se, sw, nw",
                             create: function(event, ui){
-                                $("#target #dragable div.ui-resizable-se").css({"right": "-5px","bottom": "-5px","background-color": "black","opacity": "0.5","border-radius": "10px","width": "11px","height": "11px"});
-                                $("#target #dragable div.ui-resizable-ne").css({"background-color": "black","opacity": "0.5","border-radius": "10px","width": "11px","height": "11px"});
-                                $("#target #dragable div.ui-resizable-sw").css({"background-color": "black","opacity": "0.5","border-radius": "10px","width": "11px","height": "11px"});
-                                $("#target #dragable div.ui-resizable-nw").css({"background-color": "black","opacity": "0.5","border-radius": "10px","width": "11px","height": "11px"});
+                                $("#target .dragable div.ui-resizable-se").css({"right": "-5px","bottom": "-5px","background-color": "black","opacity": "0.5","border-radius": "10px","width": "11px","height": "11px"});
+                                $("#target .dragable div.ui-resizable-ne").css({"background-color": "black","opacity": "0.5","border-radius": "10px","width": "11px","height": "11px"});
+                                $("#target .dragable div.ui-resizable-sw").css({"background-color": "black","opacity": "0.5","border-radius": "10px","width": "11px","height": "11px"});
+                                $("#target .dragable div.ui-resizable-nw").css({"background-color": "black","opacity": "0.5","border-radius": "10px","width": "11px","height": "11px"});
                             },
                             start:function(){
-                                $("#dragable").css({"border": "2px solid rgb(127, 127, 127)","background-color": "rgba(127, 127, 127, 0.36)"});
-                                $("#target #dragable div.ui-resizable-se").css({"opacity": "0.8"});
-                                $("#target #dragable div.ui-resizable-ne").css({"opacity": "0.8"});
-                                $("#target #dragable div.ui-resizable-sw").css({"opacity": "0.8"});
-                                $("#target #dragable div.ui-resizable-nw").css({"opacity": "0.8"});
+                                $(".dragable").css({"border": "2px solid rgb(127, 127, 127)","background-color": "rgba(127, 127, 127, 0.36)"});
+                                $("#target .dragable div.ui-resizable-se").css({"opacity": "0.8"});
+                                $("#target .dragable div.ui-resizable-ne").css({"opacity": "0.8"});
+                                $("#target .dragable div.ui-resizable-sw").css({"opacity": "0.8"});
+                                $("#target .dragable div.ui-resizable-nw").css({"opacity": "0.8"});
                             },
                             stop: function(event, ui) {
                                 var w = $(this).width();
@@ -489,17 +533,48 @@ if($c->number_of_pages == 0){ ?>
                                 console.log('StopEvent fired')
                                 console.log('Width:'+w);
                                 console.log('Height:'+h);
-                                $("#dragable").css({"border": "none","background-color": "none"});
-                                $("#target #dragable div.ui-resizable-se").css({"opacity": "0.5"});
-                                $("#target #dragable div.ui-resizable-ne").css({"opacity": "0.5"});
-                                $("#target #dragable div.ui-resizable-sw").css({"opacity": "0.5"});
-                                $("#target #dragable div.ui-resizable-nw").css({"opacity": "0.5"});
+                                $(".dragable").css({"border": "none","background-color": "none"});
+                                $("#target .dragable div.ui-resizable-se").css({"opacity": "0.5"});
+                                $("#target .dragable div.ui-resizable-ne").css({"opacity": "0.5"});
+                                $("#target .dragable div.ui-resizable-sw").css({"opacity": "0.5"});
+                                $("#target .dragable div.ui-resizable-nw").css({"opacity": "0.5"});
                                 /*$("header").text('Height: ' + h + 'Width: ' + w);*/
                             }
                         });
+                    $("#target .dragable").removeClass();
+                    /*var form_data = {            //repair
+                        img_id: $('.image-data').attr('data-imgid'),
+                        url: ,
+                        posx: newPosX,
+                        posy: newPosY,
+                        width: wd,
+                        height: he
+                    };
+
+                    $.ajax({
+                        url: "<?php echo site_url('content/add'); ?>",//repair
+                        type: 'POST',
+                        data: form_data // $(this).serialize(); you can use this too
+                        *//*success: function(msg) {
+                            alert("success..!! or any stupid msg");
+                        }*//*
+                    });*/
                 }
             });
         });
+        $('.change_img').click(function(e){
+            e.preventDefault();
+            var targetUrl = $('.change_img').attr('data-link');
+            $.ajax({
+                url: targetUrl,
+                type: "GET",
+                success:function(){
+                },
+                error:function (){
+                }
+            });
+        });
+
     </script>
     <div id="mid-panel" style="background-color: #EDEDED;position: absolute;left: 180px;right: 300px;top: 60px;bottom: 0;overflow: visible;z-index: 10;">
         <!--<div style="width: 80%;margin: 0 auto;padding-top: 30px;">
@@ -516,9 +591,9 @@ if($c->number_of_pages == 0){ ?>
             </div>
         </div>
     </div>-->
-        <div style="max-width: 802px;max-height: 560px;margin: 20px auto;">
+        <div class="imgchange" style="width: <?php echo $fwidth;?>px;max-width: 802px;max-height: 560px;margin: 20px auto;">
             <div id="target" style="position: relative;">
-                <img style="display: block;width: 100%;height: 100%;" src="<?php echo base_url('public/img/img321cf37d-a80e-4b4b-afc7-e00ac288e4bf.jpeg')?>">
+                <img style="display: block;width: 100%;height: 100%;" src="<?php echo base_url('public/img/'.$campaing['0']->thumbnail_img)?>">
             </div>
         </div>
         <a href="#" style="width: 22px;height: 22px;position: absolute;top: 21px;right: 27px;z-index: 50;background: #faf7f5 url('<?php echo base_url('public/img/grid.jpg')?>') no-repeat 50% 50%;"></a>
@@ -561,8 +636,24 @@ if($c->number_of_pages == 0){ ?>
                                 <div style="display: inline-block;position: relative;">
                                     <div style="width: 100%;height: 100%;transform: scale(1);">
                                         <div>
-                                            <div id="dragable" style="cursor: pointer;cursor: hand;z-index: 999;">
+                                            <div class="dragable" style="cursor: pointer;cursor: hand;z-index: 999;">
                                                 <img  style="height: 100%;width: 100%;cursor: pointer;cursor: hand;z-index: 999;" src="<?php echo base_url('public/img/slider1.jpg')?>">
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div><div style="font-size: 10px;font-size: 1rem;margin: 12px 0 0 0;text-transform: uppercase;line-height: 100%;font-style: italic;">Add a Video</div></div>
+                            </div>
+                        </div>
+                    </li>
+                    <li style="list-style: none;">
+                        <div>
+                            <div style="box-shadow: 0 1px 3px rgba(0,0,0,0.1);background: #fff;color: #46484d;padding: 8px 10px;overflow: hidden;margin: 0 0 20px;position: relative;text-align: center;">
+                                <div style="display: inline-block;position: relative;">
+                                    <div style="width: 100%;height: 100%;transform: scale(1);">
+                                        <div>
+                                            <div class="dragable" style="cursor: pointer;cursor: hand;z-index: 999;">
+                                                <img  style="height: 100%;width: 100%;cursor: pointer;cursor: hand;z-index: 999;" src="<?php echo base_url('public/img/playvideo.jpg')?>">
                                             </div>
                                         </div>
                                     </div>
@@ -584,22 +675,6 @@ if($c->number_of_pages == 0){ ?>
                                     </div>
                                 </div>
                                 <div><div style="font-size: 10px;font-size: 1rem;margin: 12px 0 0 0;text-transform: uppercase;line-height: 100%;font-style: italic;">Open a Website</div></div>
-                            </div>
-                        </div>
-                    </li>
-                    <li style="list-style: none;">
-                        <div>
-                            <div style="width: 235px;box-shadow: 0 1px 3px rgba(0,0,0,0.1);background: #fff;color: #46484d;padding: 8px 10px;overflow: hidden;margin: 0 0 20px;position: relative;text-align: center;">
-                                <div style=";-webkit-transition: opacity .3s linear .15s;-moz-transition: opacity .3s linear .15s;transition: opacity .3s linear .15s;display: inline-block;position: relative;opacity: 1;">
-                                    <div>
-                                        <div>
-                                            <div>
-                                                <img style="width: 100%;height: 100%;" src="<?php echo base_url('public/img/playvideo.jpg')?>">
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div><div style="font-size: 10px;font-size: 1rem;margin: 12px 0 0 0;text-transform: uppercase;line-height: 100%;font-style: italic;">play video</div></div>
                             </div>
                         </div>
                     </li>

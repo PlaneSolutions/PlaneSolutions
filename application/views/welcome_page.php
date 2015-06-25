@@ -111,7 +111,7 @@
             </div>
         </div>
         <div id="panels" style="100%">
-            <div class="panel-body" style="display: inline-block;width: 255px;height: 325px;overflow: hidden;">
+            <div class="panel-body" style="float: left;display: inline-block;width: 255px;height: 325px;overflow: hidden;">
                 <div id="new-campaing" onclick="addcampaing()" style="width: 100%;cursor: pointer;cursor: hand;">
                     <div class="thumbnail" style="text-decoration: none;background-color: #f5f5f5">
                         <div class="glyphicon glyphicon-plus" style="color: #727272;width: 100%;margin: 85px 0px 85px 0px;text-align: center;font-size: 60px;"></div>
@@ -137,12 +137,13 @@
                 </div>
             </div>-->
             <?php foreach($campaings as $campaing){?>
-                <div class="panel-body" style="text-transform: none;display: inline-block;width: 255px;height: 325px;overflow: hidden;">
-                    <a href="<?php echo site_url('welcome/editcampaign/edit/'.$campaing->id)?>" class="thumbnail" style="text-decoration: none;background-color: #FFFFFF;padding: 0px">
-                        <div style="position: relative;background: url(<?php if($campaing->number_of_pages == 0)echo base_url('public/img/nopages.png'); else echo base_url('public/img/'.$campaing->thumbnail_img); ?>);background-size: auto 100%;background-position-x: 50%;background-repeat: no-repeat;height: 247px;"></div>
+                    <li style="text-transform: none;box-shadow: 0 1px 4px rgba(0,0,0,0.2);float: left;width: 223px;height: 295px;border-radius: 1px;margin: 15px 20px 40px 0;overflow: hidden;position: relative;list-style: none;">
+                        <figure style="background: url(<?php if($campaing->number_of_pages == 0)echo base_url('public/img/nopages.png'); else echo base_url('public/img/'.$campaing->thumbnail_img); ?>) no-repeat 50% 0/cover;height: 247px;">
+                            <a href="<?php echo site_url('welcome/editcampaign/edit/'.$campaing->id .'/'. $campaing->thumbnail_img)?>" style="display: block;width: 100%;height: 100%;color: #aaa;text-decoration: none;"></a>
+                        </figure>
                         <div class="detail" style="cursor: default;position: relative;padding: 5px 5px 5px 10px;color: rgb(114, 114, 114);float: right;overflow: hidden;width: 225px;left: 1px;height: 50px;border: 1px solid rgb(211, 211, 211);top: 0px;background: white;">
                             <div>
-                                <b><?php echo $campaing->title ?></b><br>
+                                <a style="color: #46484d;" href="<?php echo site_url('welcome/editcampaign/edit/'.$campaing->id .'/'. $campaing->thumbnail_img)?>"><?php echo $campaing->title ?></a>
                                 <div id="camp-detail">
                                     <span style="background-color: #1D6D33;width: 12px;height: 12px;border-radius: 10px;display: inline-block;"></span>
                                     <span>Draft</span>
@@ -152,14 +153,14 @@
                             <!--Hiden Div show on hover Start-->
                             <div style="display: none">
                                 <div class='glyphicon glyphicon-trash' style='cursor: pointer;float: right;'></div>
-                                <b><?php echo $campaing->title ?></b><br><br>
+                                <a style="color: #46484d;" href="<?php echo site_url('welcome/editcampaign/edit/'.$campaing->id .'/'. $campaing->thumbnail_img)?>"><?php echo $campaing->title ?></a><br>
                                 <div id='camp-detail'>
                                     <span style='background-color: #1D6D33;width: 12px;height: 12px;border-radius: 10px;display: inline-block;'></span>
                                     <span> Draft</span>
                                 </div>
                                 <div style='left: -1px;' class='glyphicon glyphicon-cog'>
-                            <span style='top: -2px;left: 3px;position: relative;'>
-                                <span href='<?php echo site_url('main/editcampaign/settings')?>' style='text-decoration: none;color: inherit;'>Settings</span>
+                            <span style='top: -2px;left: -10px;position: relative;'>
+                                <a href='<?php echo site_url('welcome/editcampaign/settings/'.$campaing->id .'/'. $campaing->thumbnail_img)?>' style='text-decoration: none;color: inherit;'>Settings</a>
                             </span>
                                 </div>
                                 <div style='position: relative;top: 140px;'>
@@ -169,8 +170,7 @@
                             </div>
                             <!--Hiden Div show on hover End-->
                         </div>
-                    </a>
-                </div>
+                    </li>
             <?php } ?>
         </div>
     </div>
